@@ -26,3 +26,9 @@ Then("User should not be logged in", () => {
 Then("User should not be logged in with empty credentials", () => {
   LoginPage.verifyLoginFailureWithEmptyCredetnials();
 });
+When("User process to forgot password", () => {
+  LoginPage.processForgotPassword(user.username);
+});
+Then("User should see forgot password warning", () => {
+  LoginPage.getForgotPasswordWarning();
+});

@@ -4,7 +4,7 @@ class LoginPage {
   }
 
   static getUsernameField() {
-    return cy.get('input[name="username"]'); // Dodałem `return`, aby uzyskać obiekt z `cy.get`
+    return cy.get('input[name="username"]');
   }
 
   static getPasswordField() {
@@ -13,6 +13,14 @@ class LoginPage {
 
   static getLoginButton() {
     return cy.get('button[type="submit"]');
+  }
+  static getForgotPasswordButton() {
+    return cy.get(".orangehrm-login-forgot > .oxd-text");
+  }
+  static getForgotPasswordWarning() {
+    return cy
+      .get(".oxd-text--h6")
+      .should("contain.text", "Reset Password link sent successfully");
   }
   static verifyLoginSuccess() {
     return cy
@@ -24,6 +32,11 @@ class LoginPage {
   }
   static verifyLoginFailure() {
     return cy.get(".oxd-alert").should("contain.text", "Invalid credentials");
+  }
+  static getPasswordRequiredError() {
+    cy.get(
+      ":nth-child(2) > .oxd-input-group > .oxd-text, :nth-child(3) > .oxd-input-group > .oxd-text"
+    ).should("contain.text", "Required");
   }
 
   static login(username, password) {
@@ -37,14 +50,12 @@ class LoginPage {
     this.getLoginButton().click();
   }
   static verifyLoginFailureWithEmptyCredetnials() {
-    cy.get(":nth-child(2) > .oxd-input-group > .oxd-text").should(
-      "contain.text",
-      "Required"
-    );
-    cy.get(":nth-child(3) > .oxd-input-group > .oxd-text").should(
-      "contain.text",
-      "Required"
-    );
+    this.getPasswordRequiredError();
+  }
+  static processForgotPassword(username) {
+    this.getForgotPasswordButton().click();
+    this.getUsernameField().type(username);
+    this.getLoginButton().click();
   }
 }
 
