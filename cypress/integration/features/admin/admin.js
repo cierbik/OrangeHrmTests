@@ -22,3 +22,16 @@ When("I enter the username", () => {
 And("I click the submit button", () => {
   adminPage.getSumbitButton().click();
 });
+Then("I should see the user details", () => {
+  adminPage.userFound().should("be.visible").and("contain.text", user.username);
+});
+Then("I should see the add user button", () => {
+  adminPage.addUserButton().should("be.visible");
+});
+When("I click the add user button", () => {
+  adminPage.addUserButton().click();
+});
+Then("I choose the user role", () => {
+  adminPage.userRole().click();
+  adminPage.chooseUserRoleAdmin().click();
+});
