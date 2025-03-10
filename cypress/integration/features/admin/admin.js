@@ -35,3 +35,26 @@ Then("I choose the user role", () => {
   adminPage.userRole().click();
   adminPage.chooseUserRoleAdmin().click();
 });
+And("I choose the user status", () => {
+  adminPage.userStatus().click();
+  adminPage.chooseUserStatus().click();
+});
+Then("I set the employee name", () => {
+  adminPage.setEmployeeName().type(user.employeeName);
+});
+And("I choose the employee name", () => {
+  adminPage.chooseEmployeeName().click();
+});
+Then("I set the username", () => {
+  adminPage.setUsername().type(user.testUsername);
+});
+Then("I set the password", () => {
+  adminPage.setPassword().type(user.password);
+});
+And("I confirm the password", () => {
+  adminPage.confirmPassword().type(user.password);
+});
+When("I click the sumbit button success message should be displayed", () => {
+  adminPage.getSumbitButton().click();
+  adminPage.userCreated().should("be.visible").and("contain.text", "Success");
+});
