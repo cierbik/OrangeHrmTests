@@ -29,3 +29,4 @@ Feature: Admin Page
     Scenario: Check if job titles list is avaialble
     When I click the job title list
     Then I choose the job title
+    And Records found should be displayed

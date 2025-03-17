@@ -80,5 +80,8 @@ class adminPage {
   static selectJobTitle() {
     return cy.get(":nth-child(1) > .oxd-topbar-body-nav-tab-link");
   }
+  static recordFound() {
+    return cy.get(":nth-child(2) > .oxd-table-row");
+  }
 }
 export default adminPage;

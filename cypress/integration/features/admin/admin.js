@@ -73,3 +73,6 @@ When("I click the job title list", () => {
 Then("I choose the job title", () => {
   adminPage.selectJobTitle().click();
 });
+And("Records found should be displayed", () => {
+  adminPage.recordFound().should("be.visible");
+});
