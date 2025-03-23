@@ -76,3 +76,6 @@ Then("I choose the job title", () => {
 And("Records found should be displayed", () => {
   adminPage.recordFound().should("be.visible");
 });
+When("I click the add job title button", () => {
+  adminPage.addUserButton().click();
+});
