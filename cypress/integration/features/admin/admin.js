@@ -76,6 +76,15 @@ Then("I choose the job title", () => {
 And("Records found should be displayed", () => {
   adminPage.recordFound().should("be.visible");
 });
-When("I click the add job title button", () => {
-  adminPage.addUserButton().click();
+And("I click the add job title button", () => {
+  adminPage.jobTitleButton().click();
+});
+Then("I set the job title", () => {
+  adminPage.jobTitleInput().type(user.jobTitle);
+});
+And("I click the save button", () => {
+  adminPage.jobTitleSaveButton().click();
+});
+Then("Success message should be displayed", () => {
+  adminPage.userCreated().should("be.visible").and("contain.text", "Success");
 });

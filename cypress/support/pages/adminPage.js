@@ -83,5 +83,14 @@ class adminPage {
   static recordFound() {
     return cy.get(":nth-child(2) > .oxd-table-row");
   }
+  static jobTitleButton() {
+    return cy.get(".oxd-button");
+  }
+  static jobTitleInput() {
+    return cy.get(":nth-child(2) > .oxd-input");
+  }
+  static jobTitleSaveButton() {
+    return cy.get(".oxd-button--secondary");
+  }
 }
 export default adminPage;
