@@ -92,5 +92,16 @@ class adminPage {
   static jobTitleSaveButton() {
     return cy.get(".oxd-button--secondary");
   }
+  static jobTitleSelect() {
+    return cy.get(
+      ":nth-child(1) > .oxd-table-row > :nth-child(1) > .oxd-table-card-cell-checkbox > .oxd-checkbox-wrapper > label > .oxd-checkbox-input > .oxd-icon"
+    );
+  }
+  static jobTitleDeleteButton() {
+    return cy.get(".orangehrm-horizontal-padding > div > .oxd-button");
+  }
+  static jobTitleDeletConfirmationButton() {
+    return cy.get(".orangehrm-modal-footer > .oxd-button--label-danger");
+  }
 }
 export default adminPage;

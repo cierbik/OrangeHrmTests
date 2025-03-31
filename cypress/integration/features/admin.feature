@@ -30,11 +30,19 @@ Feature: Admin Page
     When I click the job title list
     Then I choose the job title
     And Records found should be displayed
-@focus 
+
     Scenario: Create a new job title
     When I click the job title list
     Then I choose the job title
     And I click the add job title button
     Then I set the job title
     And I click the save button
+    Then Success message should be displayed
+@focus 
+    Scenario: Delete a job title
+    When I click the job title list
+    Then I choose the job title
+    And I select the job title
+    Then I click the delete job title button
+    And I confirm the delete job title action
     Then Success message should be displayed

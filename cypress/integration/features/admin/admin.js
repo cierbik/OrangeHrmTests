@@ -88,3 +88,12 @@ And("I click the save button", () => {
 Then("Success message should be displayed", () => {
   adminPage.userCreated().should("be.visible").and("contain.text", "Success");
 });
+And("I select the job title", () => {
+  adminPage.jobTitleSelect().click();
+});
+Then("I click the delete job title button", () => {
+  adminPage.jobTitleDeleteButton().click();
+});
+And("I confirm the delete job title action", () => {
+  adminPage.jobTitleDeletConfirmationButton().click();
+});
