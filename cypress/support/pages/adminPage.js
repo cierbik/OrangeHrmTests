@@ -61,5 +61,27 @@ class adminPage {
   static userCreated() {
     return cy.get(".oxd-text--toast-title");
   }
+  static userDeleteButton() {
+    return cy.get(
+      ":nth-child(1) > .oxd-table-row > :nth-child(6) > .oxd-table-cell-actions > :nth-child(1)"
+    );
+  }
+  static userDeleteConfirmationButton() {
+    return cy.get(".oxd-button--label-danger");
+  }
+  static userNotFundNotification() {
+    return cy.get(
+      ".oxd-toast--info > .oxd-toast-start > .oxd-toast-content > .oxd-text--toast-message"
+    );
+  }
+  static jobButton() {
+    return cy.get(".oxd-topbar-body-nav > ul > :nth-child(2)");
+  }
+  static selectJobTitle() {
+    return cy.get(":nth-child(1) > .oxd-topbar-body-nav-tab-link");
+  }
+  static recordFound() {
+    return cy.get(":nth-child(2) > .oxd-table-row");
+  }
 }
 export default adminPage;

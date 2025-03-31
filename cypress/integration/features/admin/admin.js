@@ -1,4 +1,4 @@
-import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
+import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
 import LoginPage from "../../../support/pages/LoginPage";
 import tiers from "../../../fixtures/tiers.json";
 import user from "../../../fixtures/user.json";
@@ -17,13 +17,16 @@ Then("I should see the admin tab", () => {
   adminPage.adminTabVisible();
 });
 When("I enter the username", () => {
-  adminPage.geUserNameinput().type(user.username);
+  adminPage.geUserNameinput().type(user.testUsername);
 });
 And("I click the submit button", () => {
   adminPage.getSumbitButton().click();
 });
 Then("I should see the user details", () => {
-  adminPage.userFound().should("be.visible").and("contain.text", user.username);
+  adminPage
+    .userFound()
+    .should("be.visible")
+    .and("contain.text", user.testUsername);
 });
 Then("I should see the add user button", () => {
   adminPage.addUserButton().should("be.visible");
@@ -57,4 +60,22 @@ And("I confirm the password", () => {
 When("I click the sumbit button success message should be displayed", () => {
   adminPage.getSumbitButton().click();
   adminPage.userCreated().should("be.visible").and("contain.text", "Success");
+});
+And("I click the delete button", () => {
+  adminPage.userDeleteButton().click();
+});
+Then("I confirm the delete action", () => {
+  adminPage.userDeleteConfirmationButton().click();
+});
+When("I click the job title list", () => {
+  adminPage.jobButton().click();
+});
+Then("I choose the job title", () => {
+  adminPage.selectJobTitle().click();
+});
+And("Records found should be displayed", () => {
+  adminPage.recordFound().should("be.visible");
+});
+When("I click the add job title button", () => {
+  adminPage.addUserButton().click();
 });
