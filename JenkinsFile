@@ -22,9 +22,8 @@ pipeline {
     }
     post {
         always {
-            // Możesz dodać krok, aby przechować node_modules w cache
-            // Można dodać cache dla node_modules lub innych plików, które nie zmieniają się często
-            // Cache node_modules, aby przyspieszyć kolejne uruchomienia
+            // Dodaj krok, np. komunikat w logu, aby uniknąć błędu
+            echo 'Zakończono pipeline'
         }
     }
 }
