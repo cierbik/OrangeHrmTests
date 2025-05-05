@@ -1,19 +1,18 @@
+@NonCPS
+def someMethod() {
+    // Twoja logika
+}
+
 pipeline {
     agent any
     stages {
-        stage('Run Cypress Tests') {
+        stage('Run Cypress') {
             steps {
                 script {
-                    // Uruchomienie testów Cypress
-                    sh 'npx cypress run'
+                    someMethod()  // wywołanie metody poza sandboxem
+                    sh 'npx cypress run'  // uruchomienie testów Cypress
                 }
             }
-        }
-    }
-    post {
-        always {
-            // Przykład - można dodać więcej działań po zakończeniu testów
-            echo 'Tests finished!'
         }
     }
 }
