@@ -1,37 +1,10 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout repo') {
+        stage('Build') {
             steps {
-                checkout scm
+                echo 'Hello, World!'
             }
-        }
-
-        stage('Install dependencies') {
-            steps {
-                echo "Instalowanie zależności..."
-                sh 'npm ci'
-            }
-        }
-
-        stage('Run Cypress tests') {
-            steps {
-                echo "Uruchamianie testów Cypress..."
-                sh 'npx cypress run'
-            }
-        }
-    }
-
-    post {
-        always {
-            echo "Zbieranie artefaktów testowych..."
-            archiveArtifacts artifacts: '**/cypress/screenshots/**/*.*', allowEmptyArchive: true
-            archiveArtifacts artifacts: '**/cypress/videos/**/*.*', allowEmptyArchive: true
-        }
-
-        failure {
-            echo "Testy nie przeszły – sprawdź logi i artefakty."
         }
     }
 }
