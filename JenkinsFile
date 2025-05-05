@@ -1,10 +1,19 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Run Cypress Tests') {
             steps {
-                echo 'Hello, World!'
+                script {
+                    // Uruchomienie testów Cypress
+                    sh 'npx cypress run'
+                }
             }
+        }
+    }
+    post {
+        always {
+            // Przykład - można dodać więcej działań po zakończeniu testów
+            echo 'Tests finished!'
         }
     }
 }
