@@ -11,7 +11,7 @@ pipeline {
                 script {
                     // Instalacja Cypress, jeśli jeszcze nie jest zainstalowany
                     if (!fileExists('node_modules/cypress')) {
-                        sh 'npm install'
+                        sh 'npm install cypress'
                     }
                 }
             }
