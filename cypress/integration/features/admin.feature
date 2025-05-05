@@ -25,8 +25,24 @@ Feature: Admin Page
     And I click the delete button  
     Then I confirm the delete action
     When I click the sumbit button success message should be displayed
-@focus     
+    
     Scenario: Check if job titles list is avaialble
     When I click the job title list
     Then I choose the job title
     And Records found should be displayed
+
+    Scenario: Create a new job title
+    When I click the job title list
+    Then I choose the job title
+    And I click the add job title button
+    Then I set the job title
+    And I click the save button
+    Then Success message should be displayed
+@focus 
+    Scenario: Delete a job title
+    When I click the job title list
+    Then I choose the job title
+    And I select the job title
+    Then I click the delete job title button
+    And I confirm the delete job title action
+    Then Success message should be displayedgi
