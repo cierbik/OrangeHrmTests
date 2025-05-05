@@ -1,16 +1,17 @@
-@NonCPS
-def someMethod() {
-    // Twoja logika
-}
-
 pipeline {
     agent any
     stages {
-        stage('Run Cypress') {
+        stage('Install Cypress') {
             steps {
                 script {
-                    someMethod()  // wywołanie metody poza sandboxem
-                    sh 'npx cypress run'  // uruchomienie testów Cypress
+                    powershell 'npm install cypress'
+                }
+            }
+        }
+        stage('Run Cypress Tests') {
+            steps {
+                script {
+                    powershell 'npx cypress run'
                 }
             }
         }
