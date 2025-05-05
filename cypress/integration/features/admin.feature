@@ -45,4 +45,4 @@ Feature: Admin Page
     And I select the job title
     Then I click the delete job title button
     And I confirm the delete job title action
-    Then Success message should be displayed
+    Then Success message should be displayedgi
