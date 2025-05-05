@@ -4,22 +4,27 @@ pipeline {
         stage('Install Cypress') {
             steps {
                 script {
-                   if (!fileExists('node_modules/cypress')) { powershell 'npm install cypress'
+                    // Sprawdzamy, czy Cypress jest zainstalowany
+                    if (!fileExists('node_modules/cypress')) {
+                        powershell 'npm install cypress'  // Instalacja Cypress
+                    }
                 }
             }
         }
         stage('Run Cypress Tests') {
             steps {
                 script {
+                    // Uruchomienie testów Cypress
                     powershell 'npx cypress run'
                 }
             }
         }
-     post {
+    }
+    post {
         always {
             // Możesz dodać krok, aby przechować node_modules w cache
-            // Przechowywanie zależności (np. cache w systemie) może przyspieszyć kolejne uruchomienia
-            // Przykład: Cache node_modules na systemie Windows (możesz dodać inne metody do cachowania)
+            // Można dodać cache dla node_modules lub innych plików, które nie zmieniają się często
+            // Cache node_modules, aby przyspieszyć kolejne uruchomienia
         }
     }
 }
