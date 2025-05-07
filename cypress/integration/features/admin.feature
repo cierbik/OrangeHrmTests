@@ -5,7 +5,7 @@ Feature: Admin Page
     Given I open the admin tab
     Then I should see the admin tab
 
-
+@focus 
     Scenario: Add a new user
     Then I should see the add user button
     When I click the add user button
@@ -38,7 +38,7 @@ Feature: Admin Page
     Then I set the job title
     And I click the save button
     Then Success message should be displayed
-@focus 
+
     Scenario: Delete a job title
     When I click the job title list
     Then I choose the job title
