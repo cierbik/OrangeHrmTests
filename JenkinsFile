@@ -1,19 +1,29 @@
 pipeline {
     agent any
     stages {
+        stage('Install Cypress') {
+            steps {
+                script {
+                    // Sprawdzamy, czy Cypress jest zainstalowany
+                    if (!fileExists('node_modules/cypress')) {
+                        powershell 'npm install cypress'  // Instalacja Cypress
+                    }
+                }
+            }
+        }
         stage('Run Cypress Tests') {
             steps {
                 script {
                     // Uruchomienie testów Cypress
-                    sh 'npx cypress run'
+                    powershell 'npx cypress run'
                 }
             }
         }
     }
     post {
         always {
-            // Przykład - można dodać więcej działań po zakończeniu testów
-            echo 'Tests finished!'
+            // Dodaj krok, np. komunikat w logu, aby uniknąć błędu
+            echo 'Zakończono pipeline'
         }
     }
 }
